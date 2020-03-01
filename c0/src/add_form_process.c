@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 16:21:49 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/02/25 18:27:33 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/02/29 11:54:14 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 
@@ -71,7 +71,7 @@ char   *check_input(t_input *input)
     return ("fixe");
   if (!check_phone(input->mobil_phone))
     return ("mobile");
-  if (!check_text(input->address))
+  if (!check_address(input->address))
     return ("adresse");
   if (!check_num(input->cp))
     return ("CP");

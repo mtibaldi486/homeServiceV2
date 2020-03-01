@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 16:22:27 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/02/25 16:22:52 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/03/01 19:07:05 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 #include "../inc/hs.h"
@@ -23,11 +23,11 @@ char *recup_last_id(char *id)
       fprintf(stderr, "mysql_init() failed in recup_las_id()\n");
       return NULL;
   }
-  if (mysql_real_connect(con, "localhost", "root", "root",
-          "mydb", 0, NULL, 0) == NULL)
+  if (mysql_real_connect(con, conf->ip_srv, conf->user_db, conf->pass_db,
+  conf->name_db, 0, NULL, 0) == NULL)
   {
-      printf("Impossible de se connecter a la bdd");
-      return (NULL);
+    printf("Impossible de se connecter a la bdd");
+    return (0);
   }
   if (mysql_query(con, "SELECT MAX(id_prestataire) FROM prestataire"))
     return (NULL);
@@ -50,7 +50,7 @@ void make_qr(t_input *input)
 
   if (!(recup_last_id(id)))
     strcpy(id, "1");
-  sprintf(path, "%s-%s", id, input->city);
+  sprintf(path, "img/qr/%s-%s", id, input->city);
   sprintf(cmd, "qrencode -o %s.png %s", path, path);
   system(cmd);
   input->url_qr = path;

@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 16:22:35 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/02/25 16:22:49 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/03/01 23:40:53 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 #include "../inc/hs.h"
@@ -19,7 +19,7 @@ GtkWidget *create_lab(GtkWidget *lab, char *str, int size)
   if (size < 1 && size > 4 && !str)
     return (NULL);
   if (size == 1)
-    sprintf(tmp, "<span face=\"Verdana\" underline=\"double\"foreground=\"#000000\" size=\"small\"><b>%s</b></span>\n", str);
+    sprintf(tmp, "<span face=\"Verdana\" foreground=\"#000000\" size=\"small\"><b>%s</b></span>\n", str);
   else if (size == 2)
     sprintf(tmp, "<span face=\"Verdana\" underline=\"double\"foreground=\"#000000\" size=\"large\"><b>%s</b></span>\n", str);
   else if (size == 3)

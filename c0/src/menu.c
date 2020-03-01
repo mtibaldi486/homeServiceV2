@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 16:22:03 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/02/25 16:22:04 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/02/28 16:31:48 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 #include "../inc/hs.h"
@@ -47,6 +47,7 @@ void goto_add(GtkButton *btn, gpointer data)
 {
   t_menu *menu;
 
+  (void)btn;
   menu = data;
   destroy_menu(menu);
   create_add();
@@ -57,6 +58,7 @@ void goto_list(GtkButton *btn, gpointer data)
 {
   t_menu *menu;
 
+  (void)btn;
   menu = data;
   destroy_menu(menu);
   create_list();

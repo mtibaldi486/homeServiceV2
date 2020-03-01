@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 04:14:41 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/02/28 14:37:34 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/03/01 19:04:49 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 
@@ -70,6 +70,26 @@ int  check_conf()
   if (!*(conf->city))
   {
     printf("la ville est == null\n");
+    return 0;
+  }
+  if (!*(conf->name_db))
+  {
+    printf("la name_db est == null\n");
+    return 0;
+  }
+  if (!*(conf->user_db))
+  {
+    printf("la user_db est == null\n");
+    return 0;
+  }
+  if (!*(conf->pass_db))
+  {
+    printf("la pass_db est == null\n");
+    return 0;
+  }
+  if (!*(conf->ip_srv))
+  {
+    printf("la ip_srv est == null\n");
     return 0;
   }
   return 1;

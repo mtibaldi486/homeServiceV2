@@ -6,21 +6,35 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 16:22:46 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/02/25 18:20:07 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/02/29 11:56:56 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 #include "../inc/hs.h"
 
 int check_text(const gchar *str)
 {
-  int i;
+  int i= 0;
 
-  i = 0;
   if (!*str)
     return 0;
   while (str[i])
   {
     if (!isupper(str[i]) && !islower(str[i]) && str[i] != ' ')
+      return 0;
+    i++;
+  }
+  return 1;
+}
+
+int check_address(const gchar *str)
+{
+  int i = 0;
+
+  if (!*str)
+    return 0;
+  while (str[i])
+  {
+    if (str[i] != ' ' && !isalnum(str[i]))
       return 0;
     i++;
   }

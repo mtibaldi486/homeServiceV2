@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/07 14:39:51 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/02/25 16:28:06 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/03/01 19:06:55 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 
@@ -17,14 +17,13 @@ int   insert_presta_bdd(t_input *input)
   MYSQL *con = NULL;
   char  request[500];
 
-  con = mysql_init(con);
-  if (con == NULL)
+  if (!(con =mysql_init(con)))
   {
     fprintf(stderr, "mysql_init() failed in insert_presta_bdd()\n");
     return 0;
   }
-  if (mysql_real_connect(con, "localhost", "root", "root",
-  "mydb", 0, NULL, 0) == NULL)
+  if (mysql_real_connect(con, conf->ip_srv, conf->user_db, conf->pass_db,
+  conf->name_db, 0, NULL, 0) == NULL)
   {
     printf("Impossible de se connecter a la bdd");
     return (0);

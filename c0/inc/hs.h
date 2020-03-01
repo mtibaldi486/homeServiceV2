@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 16:22:10 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/02/28 09:45:18 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/03/01 23:43:56 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 #ifndef HS_H
@@ -110,17 +110,16 @@ typedef struct s_profil
 {
   GtkWidget *fixed;
   GtkWidget *img;
-  GtkWidget *title_lab;
   GtkWidget *btn_return;
 
-  GtkWidget *id;
+  GtkWidget *title_lab;
+  GtkWidget *name;
   GtkWidget *tel_mobil;
   GtkWidget *tel_fixe;
   GtkWidget *address;
   GtkWidget *cp;
   GtkWidget *img_qr;
   GtkWidget *salary;
-  GtkWidget *supplement;
   GtkWidget *name_company;
   GtkWidget *category;
   GtkWidget *mail;
@@ -138,7 +137,6 @@ typedef struct s_data_profil
   char cp[42];
   char path_qr[42];
   char salary[42];
-  char supplement[42];
   char name_company[42];
   char category[42];
   char mail[42];
@@ -149,6 +147,7 @@ typedef struct s_data_profil
 ////////////////////////A SUPPRIMER///////////
 void display_conf(); //configuration.c
 void  display_input(t_input *input); //add_form_process.c
+void display_data(t_data_profil * data);
 
 /////GLOBAL_C///////
 GtkWidget *window;
@@ -194,8 +193,10 @@ void check_error_add(char *error, t_add *add);
 
 /////LIST_PROVIDER_C//////////
 void create_list();
-void list_to_menu(GtkButton *btn, gpointer data);
 void display_combo_box(t_list *list);
+void  add_provider_box(char *id, char *name, char *add, char *cp, t_list *list);
+void display_profil(GtkButton *btn, gpointer data);
+void list_to_menu(GtkButton *btn, gpointer data);
 void destroy_list(t_list *list);
 
 /////QRCODE_C////////////////
@@ -210,6 +211,8 @@ void  finish_with_error(MYSQL *con);
 ////////PROFIL_C/////////////
 void            create_profil(char *id);
 t_data_profil   *select_user(char *id, t_data_profil *data);
+void            display_lab_profil(t_profil *profil);
+void            create_lab_profil (t_profil *profil, t_data_profil *data);
 void            profil_to_list(GtkButton *btn, gpointer data);
 void            destroy_profil(t_profil *profil);
 
@@ -218,6 +221,7 @@ GtkWidget *create_lab(GtkWidget *lab, char *str, int size);
 
 /////////STRING_C////////////
 int check_text(const gchar *str);
+int check_address(const gchar *str);
 int check_num(const gchar *str);
 int check_phone(const gchar *str);
 int check_price(const gchar *str);

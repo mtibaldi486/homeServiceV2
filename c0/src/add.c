@@ -33,6 +33,7 @@ void register_provider(GtkButton *btn, gpointer data)
   t_add *add;
   t_input *input;
 
+  (void)btn;
   add = data;
   if (!(input = collect_input(add)))
     return ;
@@ -52,8 +53,8 @@ GtkWidget *create_combo_box()
 
   comboBox = gtk_combo_box_text_new_with_entry();
   mysql_init(&mysql);
-  if (mysql_real_connect(&mysql, "localhost", "root", "root",
-  "mydb", 0, NULL, 0))
+  if (mysql_real_connect(&mysql, conf->ip_srv, conf->user_db, conf->pass_db,
+  conf->name_db, 0, NULL, 0))
   {
     mysql_query(&mysql, "SELECT * FROM categorie");
     result = mysql_use_result(&mysql);
@@ -81,6 +82,7 @@ void add_to_menu(GtkButton *btn, gpointer data)
 {
   t_add *add;
 
+  (void)btn;
   add = data;
   destroy_add(add);
   create_menu();
@@ -122,30 +124,22 @@ void put_widget_add(t_add *add)
   gtk_fixed_put(GTK_FIXED(add->fixed), add->title_lab, 400, 20);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->btn_return, 1000, 20);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->btn_register, 600, 440);
-
   gtk_fixed_put(GTK_FIXED(add->fixed), add->name_lab, 275, 70);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->name_entry, 275, 90);
-
   gtk_fixed_put(GTK_FIXED(add->fixed), add->nameCompany_lab, 600, 70);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->nameCompany_entry, 600, 90);
-
   gtk_fixed_put(GTK_FIXED(add->fixed), add->address_lab, 275, 140);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->address_entry, 275, 160);
-
   gtk_fixed_put(GTK_FIXED(add->fixed), add->cp_lab, 600, 140);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->cp_entry, 600, 160);
-
   gtk_fixed_put(GTK_FIXED(add->fixed), add->phone_lab, 275, 210);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->phone_entry, 275, 230);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->mphone_lab, 600, 210);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->mphone_entry, 600, 230);
-
   gtk_fixed_put(GTK_FIXED(add->fixed), add->categorie_lab, 275, 280);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->categorie_entry, 275, 300);
-
   gtk_fixed_put(GTK_FIXED(add->fixed), add->mail_lab, 600, 280);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->mail_entry, 600, 300);
-
   gtk_fixed_put(GTK_FIXED(add->fixed), add->tarif_lab, 275, 350);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->tarif_entry, 275, 370);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->suplement_lab, 275, 420);
