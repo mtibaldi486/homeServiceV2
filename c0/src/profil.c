@@ -47,10 +47,10 @@ t_data_profil *select_user(char *id, t_data_profil *data)
    MYSQL mysql;
    MYSQL_RES *result = NULL;
    MYSQL_ROW row;
-   char request[63];
+   char request[242];
 
    printf("id = %s\n", id);
-   sprintf(request, "SELECT * FROM prestataire WHERE id_prestataire = %s", id);
+   sprintf(request, "SELECT (id, nom, tel_mobile, tel_fixe, adresse_entreprise, url_qrcode, prix_heure, company_name, code_post, category ,email, nb_heure_min, prix_recurrent) FROM prestataire WHERE id_prestataire = %s", id);
    mysql_init(&mysql);
    mysql_options(&mysql,MYSQL_READ_DEFAULT_GROUP,"option");
    if(!mysql_real_connect(&mysql, conf->ip_srv, conf->user_db, conf->pass_db, conf->name_db, 0, NULL, 0))

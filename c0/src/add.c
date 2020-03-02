@@ -64,7 +64,7 @@ GtkWidget *create_combo_box()
     mysql_close(&mysql);
   }
   else
-  printf("Une erreur s'est produite lors de la connexion à la BDD!");
+  printf("Impossible de se connecter a la DB dans Create_combo_box()");
   return comboBox;
 }
 
