@@ -56,7 +56,7 @@ GtkWidget *create_combo_box()
   if (mysql_real_connect(&mysql, conf->ip_srv, conf->user_db, conf->pass_db,
   conf->name_db, 0, NULL, 0))
   {
-    mysql_query(&mysql, "SELECT * FROM categorie");
+    mysql_query(&mysql, "SELECT (nom) FROM categorie");
     result = mysql_use_result(&mysql);
     while ((row = mysql_fetch_row(result)))
     gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(comboBox), NULL, row[0]);
