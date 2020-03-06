@@ -50,7 +50,7 @@ t_data_profil *select_user(char *id, t_data_profil *data)
    char request[242];
 
    printf("id = %s\n", id);
-   sprintf(request, "SELECT (id, nom, tel_mobile, tel_fixe, adresse_entreprise, url_qrcode, prix_heure, company_name, code_post, category ,email, nb_heure_min, prix_recurrent) FROM prestataire WHERE id_prestataire = %s", id);
+   sprintf(request, "SELECT nom, tel_mobile, tel_fixe, adresse_entreprise, prix_heure, company_name, code_postal, categorie_nom, email, nb_heure_min, prix_recurrent FROM prestataire WHERE id_prestataire = %s", id);
    mysql_init(&mysql);
    mysql_options(&mysql,MYSQL_READ_DEFAULT_GROUP,"option");
    if(!mysql_real_connect(&mysql, conf->ip_srv, conf->user_db, conf->pass_db, conf->name_db, 0, NULL, 0))
@@ -60,18 +60,18 @@ t_data_profil *select_user(char *id, t_data_profil *data)
    result = mysql_store_result(&mysql);
    write(1, "OK\n", 3);
    row = mysql_fetch_row(result);
-   row[1] ? strcpy(data->name, row[1]) : strcpy(data->name, "Non disponible");
-   row[2] ? strcpy(data->tel_mobil, row[2]) : strcpy(data->tel_mobil, "Non disponible");
-   row[3] ? strcpy(data->tel_fixe, row[3]) : strcpy(data->tel_fixe, "Non disponible");
-   row[4] ? strcpy(data->address, row[4]) : strcpy(data->address, "Inconnu");
-   sprintf(data->path_qr, "/img/qr/%s-%s.png", id, conf->city);
-   row[6] ? strcpy(data->salary, row[6]) : strcpy(data->salary, "Inconnu");
-   row[9] ? strcpy(data->name_company, row[9]) : strcpy(data->name_company, "Inconnu");
-   row[10] ? strcpy(data->cp, row[10]) : strcpy(data->cp, "Inconnu");
-   row[11] ? strcpy(data->category, row[11]) : strcpy(data->category, "Inconnu");
-   row[12] ? strcpy(data->mail ,row[12]) : strcpy(data->mail ,"Inconnu");
-   row[13] ? strcpy(data->reccurent, row[13]) : strcpy(data->reccurent, "Inconnu");
-   row[14] ? strcpy(data->reduce_price, row[14]) : strcpy(data->reduce_price, "Inconnu");
+   row[0] ? strcpy(data->name, row[0]) : strcpy(data->name, "Non disponible");
+   row[1] ? strcpy(data->tel_mobil, row[1]) : strcpy(data->tel_mobil, "Non disponible");
+   row[2] ? strcpy(data->tel_fixe, row[2]) : strcpy(data->tel_fixe, "Non disponible");
+   row[3] ? strcpy(data->address, row[3]) : strcpy(data->address, "Inconnu");
+   sprintf(data->path_qr, "img/qr/%s-%s.png", id, conf->city);
+   row[4] ? strcpy(data->salary, row[4]) : strcpy(data->salary, "Inconnu");
+   row[5] ? strcpy(data->name_company, row[5]) : strcpy(data->name_company, "Inconnu");
+   row[6] ? strcpy(data->cp, row[6]) : strcpy(data->cp, "Inconnu");
+   row[7] ? strcpy(data->category, row[7]) : strcpy(data->category, "Inconnu");
+   row[8] ? strcpy(data->mail ,row[8]) : strcpy(data->mail ,"Inconnu");
+   row[9] ? strcpy(data->reccurent, row[9]) : strcpy(data->reccurent, "Inconnu");
+   row[10] ? strcpy(data->reduce_price, row[10]) : strcpy(data->reduce_price, "Inconnu");
    mysql_free_result(result);
    mysql_close(&mysql);
    return data;
@@ -81,19 +81,19 @@ void  display_lab_profil(t_profil *profil)
 {
 /*  gtk_fixed_put(GTK_FIXED(profil->fixed), profil->id, 400, 20);
   printf("lab 0 OK\n");*/
-  gtk_fixed_put(GTK_FIXED(profil->fixed), profil->title_lab, 250, 50);
+  gtk_fixed_put(GTK_FIXED(profil->fixed), profil->title_lab, 250, 30);
   gtk_fixed_put(GTK_FIXED(profil->fixed), profil->name, 275, 70);
   gtk_fixed_put(GTK_FIXED(profil->fixed), profil->tel_mobil, 275, 90);
   gtk_fixed_put(GTK_FIXED(profil->fixed), profil->tel_fixe, 600, 70);
   gtk_fixed_put(GTK_FIXED(profil->fixed), profil->address, 600, 90);
   gtk_fixed_put(GTK_FIXED(profil->fixed), profil->cp, 275, 140);
-  gtk_fixed_put(GTK_FIXED(profil->fixed), profil->img_qr, 275, 160);
+  gtk_fixed_put(GTK_FIXED(profil->fixed), profil->mail, 275, 160);
   gtk_fixed_put(GTK_FIXED(profil->fixed), profil->salary, 600, 140);
   gtk_fixed_put(GTK_FIXED(profil->fixed), profil->name_company, 275, 210);
   gtk_fixed_put(GTK_FIXED(profil->fixed), profil->category, 275, 230);
-  gtk_fixed_put(GTK_FIXED(profil->fixed), profil->mail, 600, 210);
-  gtk_fixed_put(GTK_FIXED(profil->fixed), profil->reccurent, 600, 230);
-  gtk_fixed_put(GTK_FIXED(profil->fixed), profil->reduce_price, 275, 280);
+  gtk_fixed_put(GTK_FIXED(profil->fixed), profil->reccurent, 600, 210);
+  gtk_fixed_put(GTK_FIXED(profil->fixed), profil->reduce_price, 600, 230);
+  gtk_fixed_put(GTK_FIXED(profil->fixed), profil->img_qr, 275, 280);
   return ;
 }
 
@@ -113,7 +113,7 @@ void  create_lab_profil(t_profil *profil, t_data_profil *data)
   sprintf(str, "Code postal : %s", data->cp);
   profil->cp = create_lab(profil->cp, str, 1);
   sprintf(str, "Qr code : %s", data->path_qr);
-  profil->img_qr = gtk_image_new_from_file("/img/qr/26-paris.png");
+  profil->img_qr = gtk_image_new_from_file(data->path_qr);
   sprintf(str, "Salaire demandé : %s", data->salary);
   profil->salary = create_lab(profil->salary, str, 1);
   sprintf(str, "Entreprise : %s", data->name_company);

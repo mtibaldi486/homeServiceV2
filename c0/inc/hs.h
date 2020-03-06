@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 16:22:10 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/03/01 23:43:56 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/03/02 22:42:35 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 #ifndef HS_H
@@ -88,7 +88,6 @@ typedef struct s_input
   const gchar *url_qr; // envoyer le param
   const gchar *tarif;
   const gchar *suplement;
-  const gchar *city;
   const gchar *company_name; //PAs oublié de le recup
   const gchar *cp;
   const gchar *categorie;

@@ -37,8 +37,8 @@ void register_provider(GtkButton *btn, gpointer data)
   add = data;
   if (!(input = collect_input(add)))
     return ;
-  make_qr(input);
   insert_presta_bdd(input);
+  make_qr(input);
   add_to_profil(add);
   free(input);
   return ;

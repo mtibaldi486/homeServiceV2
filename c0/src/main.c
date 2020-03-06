@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 15:42:14 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/02/27 13:23:57 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/03/02 22:55:53 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 
@@ -18,12 +18,10 @@ int   main(int ac , char **av)
     return 0;
   if (!(conf = load_conf()))
   {
-    printf("failed to load_conf");
     create_conf();
     free(conf);
     return 0;
   }
-  display_conf();
   /* Initialisation de GTK+ */
   gtk_init(&ac, &av);
   /* Création de la fenêtre */

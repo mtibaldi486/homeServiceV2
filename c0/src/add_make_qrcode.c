@@ -5,10 +5,11 @@
 /*                                              +:+       +:+        +:+           +:+      */
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
-/*   Created: 2020/02/25 16:22:27 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/03/01 19:07:05 by root   ##########  ########  ######## ###########      */
+/*   Created: 2020/03/03 10:57:59 by root    #+#              #+# #+#    #+     #+#         */
+/*   Updated: 2020/03/03 10:58:04 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
+
 #include "../inc/hs.h"
 
 char *recup_last_id(char *id)
@@ -50,7 +51,7 @@ void make_qr(t_input *input)
 
   if (!(recup_last_id(id)))
     strcpy(id, "1");
-  sprintf(path, "img/qr/%s-%s", id, input->city);
+  sprintf(path, "img/qr/%s-%s", id, conf->city);
   sprintf(cmd, "qrencode -o %s.png %s", path, path);
   system(cmd);
   input->url_qr = path;

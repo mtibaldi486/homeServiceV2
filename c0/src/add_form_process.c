@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 16:21:49 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/02/29 11:54:14 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/03/02 22:44:10 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 
@@ -39,7 +39,6 @@ t_input   *init_input(t_input *input)
   input->url_qr = NULL;
   input->tarif = NULL ;
   input->suplement = NULL;
-  input->city = NULL;
   input->company_name = NULL;
   input->cp = NULL;
   input->categorie = NULL;
@@ -59,7 +58,6 @@ void   load_input(t_add *add, t_input *input)
   input->cp = gtk_entry_get_text (GTK_ENTRY(add->cp_entry));
   input->categorie = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(add->categorie_entry));
   input->mail = gtk_entry_get_text (GTK_ENTRY(add->mail_entry));
-  input->city = conf->city;
   return ;
 }
 
@@ -123,6 +121,6 @@ void check_error_add(char *error, t_add *add)
 
 void  display_input(t_input *input)
 {
-  printf("name = %s\nfixe phone = %s\nmobile = %s\naddress = %s\nurl qr = %s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",input->name, input->fixe_phone, input->mobil_phone, input->address, input->url_qr, input->tarif, input->suplement, input->city, input->company_name, input->cp, input->categorie, input->mail);
+  printf("name = %s\nfixe phone = %s\nmobile = %s\naddress = %s\nurl qr = %s\n%s\n%s\n%s\n%s\n%s\n%s\n",input->name, input->fixe_phone, input->mobil_phone, input->address, input->url_qr, input->tarif, input->suplement, input->company_name, input->cp, input->categorie, input->mail);
   return ;
 }
