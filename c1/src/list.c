@@ -6,22 +6,51 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/03/06 12:54:29 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/03/06 13:56:38 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/03/28 16:25:30 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 
 #include "../inc/fusion.h"
 
-t_dir *lst_new(char *str, int id)
+t_dir *lst_new(char *str)
 {
   t_dir *new;
 
   if (!(new = malloc(sizeof(t_dir))))
     return NULL;
-  new->id = id;
   new->path = strdup(str);
   new->next = NULL;
   return  new;
+}
+
+t_dir *lstdelone(t_dir *lst, t_dir **start)
+{
+  t_dir *begin = *start;
+  t_dir *before = begin;
+
+  if (lst == begin)
+  {
+    *start = begin->next;
+    free(begin->path);
+    free(begin);
+    return(*start);
+  }
+  while(begin)
+  {
+    if (lst == begin)
+    {
+      if (lst->next)
+        before->next = lst->next;
+      else
+        before->next = NULL;
+      free(lst->path);
+      free(lst);
+      return before;
+    }
+    before = begin;
+    begin = begin->next;
+  }
+  return (0);
 }
 
 void	lstadd_back(t_dir **alst, t_dir *new)
@@ -50,7 +79,7 @@ void display_list(t_dir *start)
   if (lst)
     while (lst)
     {
-      printf("id = %d || str = %s\n", lst->id , lst->path);
+      printf("list str = %s\n", lst->path);
       lst = lst->next;
     }
 }
