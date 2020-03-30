@@ -13,7 +13,7 @@ CFLAGS = -Wall -Wextra -c -g
 #SANITIZE
 SAN = -fsanitize=address
 
-SRCS = main.c utils.c list.c
+SRCS = main.c utils.c list.c merge.c setup.c
 
 OBJS = $(SRCS:.c=.o)
 

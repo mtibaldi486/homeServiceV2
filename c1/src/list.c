@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/03/06 12:54:29 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/03/28 16:25:30 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/03/29 21:52:54 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 
@@ -68,6 +68,22 @@ void	lstadd_back(t_dir **alst, t_dir *new)
 			begin = begin->next;
 		begin->next = new;
 	}
+  return ;
+}
+
+void dellist(t_dir **start)
+{
+  t_dir *next;
+
+  if (!start && !*start)
+    return ;
+  while (*start)
+  {
+    next = (*start)->next;
+    free((*start)->path);
+    free(*start);
+    *start = next;
+  }
   return ;
 }
 

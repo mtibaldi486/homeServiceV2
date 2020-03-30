@@ -6,17 +6,26 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/03/03 20:53:40 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/03/28 16:30:14 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/03/29 21:50:38 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
-
 #include "../inc/fusion.h"
 
 int main(void)
 {
   char pdir_backup[142];
   t_dir *start = NULL;
+  t_conf *conf;
 
+  if (!(conf = malloc(sizeof(t_conf))))
+    return 0;
+  if (!(conf = load_conf(conf)))
+  {
+    printf("load fail\n");
+    create_conf();
+    free(conf);
+    return 0;
+  }
   printf("/*        Fusion       *\\\nDeveloped by Tibaldi x Malecot\nLe 03/03/2020\n\\*                     */\n");
   printf("Veuillez entrer le chemin du repertoire: backup/\nou Ctrl + c pour quitter\nchemin>");
   get_input(pdir_backup, 142);
@@ -28,8 +37,10 @@ int main(void)
     get_input(pdir_backup, 142);
   }
   select_dir(&start);
-  printf("Un merge de tout les fichier .sql present va etre effectuer vers la base central y/n");
-  //merge(start);
+  printf("Un merge de tout les fichier .sql present va etre effectuer vers la base central y/n :");
+  merge(start, pdir_backup, conf);
+  free_conf(conf);
+  dellist(&start);
   return 1;
 }
 
@@ -37,7 +48,6 @@ int main(void)
   Permet de supprimer de la list tout les fichier sans l'extension .sql */
 int  select_dir(t_dir **start)
 {
-  char   buff[42];
   t_dir   *lst = *start;
 
   while (lst)
