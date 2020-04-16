@@ -8,12 +8,12 @@ public class Gui {
     private JButton btn_home;
     private JPanel home_panel;
 
-    public gui() {
-        btn_home.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                JOptionPane.showMessageDialog(null, "Hello world");
-            }
-        });
+
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("App");
+        frame.setContentPane(new Gui().home_panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 }

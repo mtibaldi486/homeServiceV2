@@ -1,4 +1,4 @@
 package esgi.hs.gui;
 
-public class Launcher {
-}
+import javax.swing.*;
+
