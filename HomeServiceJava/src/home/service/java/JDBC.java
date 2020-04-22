@@ -9,11 +9,9 @@ import java.util.List;
 
 public class JDBC {
     private Connection conn = null;
-    Statement stmt = null;
-    Statement stmt2 = null;
-    ResultSet rs = null;
-    ResultSet rs2 = null;
-    PreparedStatement test = null;
+    private Statement stmt = null;
+    private ResultSet rs = null;
+    private PreparedStatement test = null;
 
     public JDBC(){
         try {
@@ -26,7 +24,7 @@ public class JDBC {
         }
     }
 
-    public String[][] getTable(String Query) throws SQLException{
+    public String[][] getDataTable(String Query, int nb_button) throws SQLException{
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(Query);
@@ -35,43 +33,91 @@ public class JDBC {
             int j = 0;
             int k;
             rs.last();
-            String Prestataire[][] = new String[rs.getRow()][rs.getMetaData().getColumnCount()];
+            String Result[][] = new String[rs.getRow()][rs.getMetaData().getColumnCount() + nb_button];
             rs.first();
             do{
                 i=1;
                 k = 0;
                 while(i <= rs.getMetaData().getColumnCount()){
-                    Prestataire[j][k] = rs.getString(i);
-                    i++;
-                    k++;
+                    if(rs.getString(i) != null) {
+                        Result[j][k] = rs.getString(i);
+                        i++;
+                        k++;
+                    }
+                    else{
+                        break;
+                    }
                 }
                 j++;
             }while(rs.next());
-            return Prestataire;
+            rs.close();
+            return Result;
         }
         catch(SQLException e){
-            System.out.println("SQLException: " + e.getMessage());
-            System.out.println("SQLState: " + e.getSQLState());
-            System.out.println("CodeError: " + e.getErrorCode());
+            return null;
         }
-        return null;
     }
 
-    public void afficherTable(String[][] presta){
-        int i = 0;
-        int j;
-        if(presta.length != 0) {
-            while (i < presta.length) {
-                j = 0;
-                while (j < presta[i].length) {
-                    System.out.print(presta[i][j] + ", ");
-                    j++;
+    public String[] getOneDataTable(String Query) throws SQLException{
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(Query);
+
+            int i;
+            int j = 0;
+            int k;
+            rs.last();
+            String Result[] = new String[rs.getRow()];
+            rs.first();
+            do{
+                i=1;
+                while(i <= rs.getMetaData().getColumnCount()){
+                    Result[j] = rs.getString(i);
+                    i++;
                 }
-                System.out.println(" ");
+                j++;
+            }while(rs.next());
+            rs.close();
+            return Result;
+        }
+        catch(SQLException e){
+            return null;
+        }
+
+    }
+
+    public String[] getHeaderTable(String Query, int nb_button){
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(Query);
+
+            int i = 1;
+            String header[] = new String[rs.getMetaData().getColumnCount() + nb_button];
+
+            while(i <= rs.getMetaData().getColumnCount()){
+                header[i-1] = rs.getMetaData().getColumnLabel(i);
                 i++;
             }
+            if(nb_button > 0) {
+                while (i <= rs.getMetaData().getColumnCount() + nb_button) {
+                    header[i - 1] = "";
+                    i++;
+                }
+            }
+            rs.close();
+            return header;
+        }
+        catch(SQLException e){
+            return null;
         }
     }
 
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
+    }
 
 }
