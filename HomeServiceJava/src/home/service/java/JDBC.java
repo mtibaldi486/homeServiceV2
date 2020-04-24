@@ -24,7 +24,7 @@ public class JDBC {
         }
     }
 
-    public String[][] getDataTable(String Query, int nb_button) throws SQLException{
+    public String[][] getDataTable(String Query, int nb_button){
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(Query);
@@ -45,7 +45,8 @@ public class JDBC {
                         k++;
                     }
                     else{
-                        break;
+                        i++;
+                        k++;
                     }
                 }
                 j++;
@@ -58,7 +59,7 @@ public class JDBC {
         }
     }
 
-    public String[] getOneDataTable(String Query) throws SQLException{
+    public String[] getOneDataTable(String Query){
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(Query);
@@ -110,6 +111,10 @@ public class JDBC {
         catch(SQLException e){
             return null;
         }
+    }
+
+    public String insertData(String Query){
+        return "Reussi";
     }
 
     public Connection getConn() {

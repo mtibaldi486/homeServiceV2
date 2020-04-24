@@ -50,14 +50,7 @@ public class ButtonEditor extends DefaultCellEditor implements ActionListener{
         if (isPushed)  {
             if(this.column.equals("Planning")) {
                 this.last.dispose();
-                try {
-                    next = new PlanningPage(this.id);
-                }
-                catch (SQLException e){
-                    System.out.println("SQLException: " + e.getMessage());
-                    System.out.println("SQLState: " + e.getSQLState());
-                    System.out.println("CodeError: " + e.getErrorCode());
-                }
+                next = new PlanningPage(this.id);
             }
             else if(this.column.equals("Affectation")){
                 JOptionPane.showMessageDialog(button ,label + this.column);

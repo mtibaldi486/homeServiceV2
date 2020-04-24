@@ -18,7 +18,7 @@ public class HomePage extends JFrame implements ActionListener {
     private JLabel label1;
     private JLabel label2;
 
-    public HomePage(JDBC DataManager) throws SQLException{
+    public HomePage(JDBC DataManager){
         this.setContentPane(panel);
         this.setVisible(true);
         Dimension totalHeight = Toolkit.getDefaultToolkit().getScreenSize();
@@ -33,7 +33,7 @@ public class HomePage extends JFrame implements ActionListener {
     }
 
 
-    public void afficherPrestataire( JDBC DataManager) throws SQLException {
+    public void afficherPrestataire( JDBC DataManager){
         String Query = " SELECT * FROM prestataire ORDER BY id_prestataire ASC";
         Object[][]data = DataManager.getDataTable(Query,3);
         Object[]header = DataManager.getHeaderTable(Query,3);
@@ -41,16 +41,18 @@ public class HomePage extends JFrame implements ActionListener {
         Object[]dataPlanning = DataManager.getOneDataTable(Query);
         Query = "SELECT id_prestataire FROM prestataire WHERE id_prestataire NOT IN (SELECT prestataire_id_prestataire FROM affectation) ORDER BY id_prestataire ASC";
         Object[]dataAffect = DataManager.getOneDataTable(Query);
+
+
         header[header.length-3] ="Planning";
         header[header.length-2] ="Affectation";
         header[header.length-1] ="Profile";
         this.setBtn(data,header,dataPlanning,3);
         this.setBtn(data,header,dataAffect,2);
+        data=this.sortPrestataire(data);
         for (int i = 0; i < data.length; i++) {
             String btn = "Link";
             data[i][header.length - 1] = btn;
         }
-        data=this.sort(data);
         this.table1 = new JTable(data, header);
         table1.setDefaultEditor(Object.class, null);
         table1.getColumn("Planning").setCellRenderer(new ButtonRenderer());
@@ -62,31 +64,49 @@ public class HomePage extends JFrame implements ActionListener {
         scroll1.setViewportView(table1);
     }
 
-    public void afficherPrestation(JDBC DataManager) throws SQLException{
+    public void afficherPrestation(JDBC DataManager){
         String Query = " SELECT * FROM prestation ";
-        Object[][]data = DataManager.getDataTable(Query,0);
-        Object[] header = DataManager.getHeaderTable(Query,0);
+        Object[][]data = DataManager.getDataTable(Query,1);
+        Object[] header = DataManager.getHeaderTable(Query,1);
+        Query = "SELECT id_prestation FROM prestation WHERE id_prestation NOT IN (SELECT prestation_id_prestation FROM affectation) ORDER BY id_prestation ASC";
+        Object[]prestaAffect = DataManager.getOneDataTable(Query);
+        header[header.length-1] ="Affectation";
+        this.setBtn(data,header,prestaAffect,1);
+        data=this.sortPrestation(data);
+
         this.table2 = new JTable(data, header);
+        table2.setDefaultEditor(Object.class, null);
+        table2.getColumn("Affectation").setCellRenderer(new ButtonRenderer());
+        table2.getColumn("Affectation").setCellEditor(new ButtonEditor(new JCheckBox(),this, DataManager));
         scroll2.setViewportView(table2);
     }
 
     public Object[][] setBtn(Object[][] data,Object[] header, Object[] Use, int position){
-        int j = 0;
-        for (int i = 0; i < data.length; i++) {
+        if(Use != null) {
+            int j = 0;
             String btn;
-            if(data[i][0].equals(Use[j])){
-                btn = "N";
-                j++;
+            for (int i = 0; i < data.length; i++) {
+                if (j < Use.length && data[i][0].equals(Use[j])) {
+                    btn = "N";
+                    j++;
+                } else {
+                    btn = "Y";
+                }
+                data[i][header.length - position] = btn;
             }
-            else{
-                btn = "Y";
-            }
-            data[i][header.length - position] = btn;
+            return data;
         }
-        return data;
+        else{
+            String btn;
+            for (int i = 0; i < data.length; i++) {
+                btn = "Y";
+                data[i][header.length - position] = btn;
+            }
+            return data;
+        }
     }
 
-    public Object[][] sort(Object[][] data) {
+    public Object[][] sortPrestataire(Object[][] data) {
         Object[][] datafinal = new Object[data.length][data[0].length];
         int k = 0;
         for (int i = 0; i < data.length; i++) {
@@ -97,7 +117,27 @@ public class HomePage extends JFrame implements ActionListener {
         }
         while (k < datafinal.length) {
             for (int i = 0; i < data.length; i++) {
-                if (data[i][15].equals("Y")) {
+                if (data[i][15].equals("Y") && data[i][16].equals("Y")) {
+                    datafinal[k] = data[i];
+                }
+            }
+            k++;
+        }
+        return datafinal;
+    }
+
+    public Object[][] sortPrestation(Object[][] data) {
+        Object[][] datafinal = new Object[data.length][data[0].length];
+        int k = 0;
+        for (int i = 0; i < data.length; i++) {
+            if (data[i][6].equals("N")) {
+                datafinal[k] = data[i];
+                k++;
+            }
+        }
+        while (k < datafinal.length) {
+            for (int i = 0; i < data.length; i++) {
+                if (data[i][6].equals("Y")) {
                     datafinal[k] = data[i];
                 }
             }
