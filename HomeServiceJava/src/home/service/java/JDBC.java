@@ -113,9 +113,18 @@ public class JDBC {
         }
     }
 
-    public String insertData(String Query){
-        return "Reussi";
+    public void updateData(String Query){
+        try {
+            stmt = conn.createStatement();
+            stmt.executeUpdate(Query);
+        }
+        catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("CodeError: " + e.getErrorCode());
+        }
     }
+
 
     public Connection getConn() {
         return conn;

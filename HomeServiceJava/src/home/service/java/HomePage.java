@@ -35,32 +35,25 @@ public class HomePage extends JFrame implements ActionListener {
 
     public void afficherPrestataire( JDBC DataManager){
         String Query = " SELECT * FROM prestataire ORDER BY id_prestataire ASC";
-        Object[][]data = DataManager.getDataTable(Query,3);
-        Object[]header = DataManager.getHeaderTable(Query,3);
+        Object[][]data = DataManager.getDataTable(Query,2);
+        Object[]header = DataManager.getHeaderTable(Query,2);
         Query = "SELECT id_prestataire FROM prestataire WHERE id_prestataire NOT IN (SELECT prestataire_id_prestataire FROM planning WHERE date_debut > NOW() ) ORDER BY id_prestataire ASC";
         Object[]dataPlanning = DataManager.getOneDataTable(Query);
         Query = "SELECT id_prestataire FROM prestataire WHERE id_prestataire NOT IN (SELECT prestataire_id_prestataire FROM affectation) ORDER BY id_prestataire ASC";
         Object[]dataAffect = DataManager.getOneDataTable(Query);
 
 
-        header[header.length-3] ="Planning";
-        header[header.length-2] ="Affectation";
-        header[header.length-1] ="Profile";
-        this.setBtn(data,header,dataPlanning,3);
-        this.setBtn(data,header,dataAffect,2);
+        header[header.length-2] ="Planning";
+        header[header.length-1] ="Affectation";
+        this.setBtn(data,header,dataPlanning,2);
+        this.setBtn(data,header,dataAffect,1);
         data=this.sortPrestataire(data);
-        for (int i = 0; i < data.length; i++) {
-            String btn = "Link";
-            data[i][header.length - 1] = btn;
-        }
         this.table1 = new JTable(data, header);
         table1.setDefaultEditor(Object.class, null);
         table1.getColumn("Planning").setCellRenderer(new ButtonRenderer());
         table1.getColumn("Planning").setCellEditor(new ButtonEditor(new JCheckBox(),this, DataManager));
         table1.getColumn("Affectation").setCellRenderer(new ButtonRenderer());
         table1.getColumn("Affectation").setCellEditor(new ButtonEditor(new JCheckBox(),this, DataManager));
-        table1.getColumn("Profile").setCellRenderer(new ButtonRenderer());
-        table1.getColumn("Profile").setCellEditor(new ButtonEditor(new JCheckBox(),this, DataManager));
         scroll1.setViewportView(table1);
     }
 
@@ -70,14 +63,14 @@ public class HomePage extends JFrame implements ActionListener {
         Object[] header = DataManager.getHeaderTable(Query,1);
         Query = "SELECT id_prestation FROM prestation WHERE id_prestation NOT IN (SELECT prestation_id_prestation FROM affectation) ORDER BY id_prestation ASC";
         Object[]prestaAffect = DataManager.getOneDataTable(Query);
-        header[header.length-1] ="Affectation";
+        header[header.length-1] ="Possibilités";
         this.setBtn(data,header,prestaAffect,1);
         data=this.sortPrestation(data);
 
         this.table2 = new JTable(data, header);
         table2.setDefaultEditor(Object.class, null);
-        table2.getColumn("Affectation").setCellRenderer(new ButtonRenderer());
-        table2.getColumn("Affectation").setCellEditor(new ButtonEditor(new JCheckBox(),this, DataManager));
+        table2.getColumn("Possibilités").setCellRenderer(new ButtonRenderer());
+        table2.getColumn("Possibilités").setCellEditor(new ButtonEditor(new JCheckBox(),this, DataManager));
         scroll2.setViewportView(table2);
     }
 
@@ -119,9 +112,9 @@ public class HomePage extends JFrame implements ActionListener {
             for (int i = 0; i < data.length; i++) {
                 if (data[i][15].equals("Y") && data[i][16].equals("Y")) {
                     datafinal[k] = data[i];
+                    k++;
                 }
             }
-            k++;
         }
         return datafinal;
     }
@@ -139,9 +132,9 @@ public class HomePage extends JFrame implements ActionListener {
             for (int i = 0; i < data.length; i++) {
                 if (data[i][6].equals("Y")) {
                     datafinal[k] = data[i];
+                    k++;
                 }
             }
-            k++;
         }
         return datafinal;
     }

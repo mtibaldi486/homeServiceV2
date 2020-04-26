@@ -20,8 +20,7 @@ public class ButtonRenderer extends JButton implements TableCellRenderer {
                 setBackground(Color.GREEN);
             }
             else {
-                setForeground(table.getSelectionForeground());
-                setBackground(table.getSelectionBackground());
+                setBackground(Color.GREEN);
             }
         } else{
             if(value.toString().equals("N")){
@@ -31,8 +30,7 @@ public class ButtonRenderer extends JButton implements TableCellRenderer {
                 setBackground(Color.GREEN);
             }
             else {
-                setForeground(table.getSelectionForeground());
-                setBackground(table.getSelectionBackground());
+                setBackground(Color.GREEN);
             }
         }
         setText( (value ==null) ? "" : value.toString() );

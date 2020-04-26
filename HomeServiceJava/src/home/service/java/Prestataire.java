@@ -12,13 +12,13 @@ public class Prestataire {
     private String tel_fixe;
     private String adresse_entreprise;
     private String url_qrcode;
-    private String prix_heure;
+    private float prix_heure;
     private String supplement;
     private String company_name;
     private String code_postal;
     private String email;
-    private String nb_heure_min;
-    private String prix_recurrent;
+    private float nb_heure_min;
+    private float prix_recurrent;
     private String categorie_ville;
     private String categorie_nom;
 
@@ -35,13 +35,13 @@ public class Prestataire {
         this.tel_fixe = array[0][3];
         this.adresse_entreprise = array[0][4];
         this.url_qrcode = array[0][5];
-        this.prix_heure = array[0][6];
+        this.prix_heure = Float.parseFloat(array[0][6]);
         this.supplement = array[0][7];
         this.company_name = array[0][8];
         this.code_postal = array[0][9];
         this.email = array[0][10];
-        this.nb_heure_min = array[0][11];
-        this.prix_recurrent = array[0][12];
+        this.nb_heure_min = Float.parseFloat(array[0][11]);
+        this.prix_recurrent = Float.parseFloat(array[0][12]);
         this.categorie_ville = array[0][13];
         this.categorie_nom = array[0][14];
     }
@@ -94,11 +94,11 @@ public class Prestataire {
         this.url_qrcode = url_qrcode;
     }
 
-    public String getPrix_heure() {
+    public float getPrix_heure() {
         return prix_heure;
     }
 
-    public void setPrix_heure(String prix_heure) {
+    public void setPrix_heure(float prix_heure) {
         this.prix_heure = prix_heure;
     }
 
@@ -134,19 +134,19 @@ public class Prestataire {
         this.email = email;
     }
 
-    public String getNb_heure_min() {
+    public float getNb_heure_min() {
         return nb_heure_min;
     }
 
-    public void setNb_heure_min(String nb_heure_min) {
+    public void setNb_heure_min(float nb_heure_min) {
         this.nb_heure_min = nb_heure_min;
     }
 
-    public String getPrix_recurrent() {
+    public float getPrix_recurrent() {
         return prix_recurrent;
     }
 
-    public void setPrix_recurrent(String prix_recurrent) {
+    public void setPrix_recurrent(float prix_recurrent) {
         this.prix_recurrent = prix_recurrent;
     }
 

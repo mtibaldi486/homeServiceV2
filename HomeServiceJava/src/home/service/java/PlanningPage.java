@@ -63,7 +63,7 @@ public class PlanningPage extends JFrame implements ActionListener {
     }
 
     public void afficherPlanning(){
-        String Query = " SELECT * FROM planning WHERE prestataire_id_prestataire = " + this.presta.getId_prestataire();
+        String Query = " SELECT * FROM planning WHERE prestataire_id_prestataire = " + this.presta.getId_prestataire() +" ORDER BY date_debut ASC";
 
         Object[][] data = this.DataManager.getDataTable(Query, 0);
         Object[] header = this.DataManager.getHeaderTable(Query, 0);
@@ -148,6 +148,7 @@ public class PlanningPage extends JFrame implements ActionListener {
             InsertPlan(dd,df);
             start.add(Calendar.DATE, 1);
         }
+        this.afficherPlanning();
 
         return;
     }
@@ -156,14 +157,15 @@ public class PlanningPage extends JFrame implements ActionListener {
         String Check = "SELECT * FROM planning WHERE DATE(date_debut) = DATE(\"" + date_debut + "\") AND DATE(date_fin) = DATE(\"" + date_fin + "\") AND prestataire_id_prestataire = " + this.presta.getId_prestataire();
         String[][] QueryCheck = this.DataManager.getDataTable(Check, 0);
         System.out.println(Check);
+        String Query;
         if(QueryCheck != null) {
-            String Query = "UPDATE planning SET date_debut = \""+date_debut+"\", date_fin = \""+date_fin+"\" WHERE id_planning = " + QueryCheck[0][0];
-            System.out.println(Query);
+            Query = "UPDATE planning SET date_debut = \""+date_debut+"\", date_fin = \""+date_fin+"\" WHERE id_planning = " + QueryCheck[0][0];
+            this.DataManager.updateData(Query);
         }
         else{
-            String Query = "INSERT INTO planning(date_debut,date_fin,prestataire_id_prestataire,prestataire_categorie_ville,prestataire_categorie_nom) " +
+            Query = "INSERT INTO planning(date_debut,date_fin,prestataire_id_prestataire,prestataire_categorie_ville,prestataire_categorie_nom) " +
                     "VALUES (\""+date_debut+"\",\""+date_fin+"\","+this.presta.getId_prestataire()+",\""+this.presta.getCategorie_ville()+"\",\""+this.presta.getCategorie_nom()+"\")";
-            System.out.println(Query);
+            this.DataManager.updateData(Query);
         }
     }
 }
