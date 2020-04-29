@@ -2,25 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="687e121e-0952-4049-a499-c96a5dbe1535" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/home/service/java/AffectationPage.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/home/service/java/AffectationPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/home/service/java/Bareme.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/home/service/java/Prestation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/home/service/java/CategoriePage.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/home/service/java/CategoriePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/home/service/java/PrestationPage.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/home/service/java/PrestationPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/ButtonEditor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/ButtonEditor$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/ButtonEditor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/ButtonEditor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/AffectationPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/AffectationPage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/ButtonRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/ButtonRenderer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/HomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/HomePage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/JDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/JDBC.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/MainPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/MainPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/PlanningPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/PlanningPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home/service/java/ButtonEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/ButtonEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home/service/java/AffectationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/AffectationPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/home/service/java/ButtonRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/ButtonRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home/service/java/HomePage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/HomePage.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/home/service/java/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/HomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/home/service/java/JDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/JDBC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/home/service/java/MainPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/MainPage.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home/service/java/PlanningPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/PlanningPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home/service/java/Prestataire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/Prestataire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home/service/java/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/MainPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +45,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="74" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="9" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="305" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -110,10 +108,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587464807745" />
-    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1587857871088">
+    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1588190506673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587857871088" />
+    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588190506673" />
     <state x="689" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587464806820">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -134,22 +132,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587718897988" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1587859311985">
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1588191186499">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587859311985" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1587859311985">
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588191186499" />
+    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1588191186499">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587859311985" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1587859311985">
+    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588191186499" />
+    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1588191186499">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587859311985" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1587859311985">
+    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588191186499" />
+    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1588191186499">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587859311985" />
+    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588191186499" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1587418679041">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -166,10 +164,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587418679041" />
-    <state x="655" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1587851437718">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1588169060599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="655" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587851437718" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1588169060599" />
+    <state x="839" y="314" key="UIDesigner.ListEditorDialog" timestamp="1588169874033">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="839" y="314" key="UIDesigner.ListEditorDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588169874033" />
+    <state x="655" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1588168769719">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="655" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588168769719" />
     <state x="0" y="0" width="1510" height="718" maximized="true" key="dock-window-1" timestamp="1587468703508">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

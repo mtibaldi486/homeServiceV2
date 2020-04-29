@@ -11,36 +11,45 @@ public class HomePage extends JFrame implements ActionListener {
     private JPanel panel;
     private JTable table1;
     private JTable table2;
-    private JButton button1;
-    private JButton button2;
+    private JButton returnBtn;
+    private JButton createBtn;
     private JScrollPane scroll2;
     private JScrollPane scroll1;
     private JLabel label1;
     private JLabel label2;
+    private JButton CatBtn;
+    private JDBC DataManager;
 
     public HomePage(JDBC DataManager){
+        this.returnBtn.addActionListener(this);
+        this.returnBtn.setActionCommand("back");
+        this.createBtn.addActionListener(this);
+        this.createBtn.setActionCommand("create");
+        this.CatBtn.addActionListener(this);
+        this.CatBtn.setActionCommand("categorie");
+
+        this.DataManager = DataManager;
+
         this.setContentPane(panel);
         this.setVisible(true);
         Dimension totalHeight = Toolkit.getDefaultToolkit().getScreenSize();
         int height = (totalHeight.height/8) * 7;
         int width = totalHeight.width;
         this.setSize(width ,height);
-        this.afficherPrestataire(DataManager);
-        this.afficherPrestation(DataManager);
-        this.label1.setText("Prestataires");
-        this.label2.setText("Prestations");
+        this.afficherPrestataire();
+        this.afficherPrestation();
 
     }
 
 
-    public void afficherPrestataire( JDBC DataManager){
+    public void afficherPrestataire(){
         String Query = " SELECT * FROM prestataire ORDER BY id_prestataire ASC";
-        Object[][]data = DataManager.getDataTable(Query,2);
-        Object[]header = DataManager.getHeaderTable(Query,2);
+        Object[][]data = this.DataManager.getDataTable(Query,2);
+        Object[]header = this.DataManager.getHeaderTable(Query,2);
         Query = "SELECT id_prestataire FROM prestataire WHERE id_prestataire NOT IN (SELECT prestataire_id_prestataire FROM planning WHERE date_debut > NOW() ) ORDER BY id_prestataire ASC";
-        Object[]dataPlanning = DataManager.getOneDataTable(Query);
+        Object[]dataPlanning = this.DataManager.getOneDataTable(Query);
         Query = "SELECT id_prestataire FROM prestataire WHERE id_prestataire NOT IN (SELECT prestataire_id_prestataire FROM affectation) ORDER BY id_prestataire ASC";
-        Object[]dataAffect = DataManager.getOneDataTable(Query);
+        Object[]dataAffect = this.DataManager.getOneDataTable(Query);
 
 
         header[header.length-2] ="Planning";
@@ -57,12 +66,12 @@ public class HomePage extends JFrame implements ActionListener {
         scroll1.setViewportView(table1);
     }
 
-    public void afficherPrestation(JDBC DataManager){
+    public void afficherPrestation(){
         String Query = " SELECT * FROM prestation ";
-        Object[][]data = DataManager.getDataTable(Query,1);
-        Object[] header = DataManager.getHeaderTable(Query,1);
+        Object[][]data = this.DataManager.getDataTable(Query,1);
+        Object[] header = this.DataManager.getHeaderTable(Query,1);
         Query = "SELECT id_prestation FROM prestation WHERE id_prestation NOT IN (SELECT prestation_id_prestation FROM affectation) ORDER BY id_prestation ASC";
-        Object[]prestaAffect = DataManager.getOneDataTable(Query);
+        Object[]prestaAffect = this.DataManager.getOneDataTable(Query);
         header[header.length-1] ="Possibilités";
         this.setBtn(data,header,prestaAffect,1);
         data=this.sortPrestation(data);
@@ -142,6 +151,18 @@ public class HomePage extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        String action = e.getActionCommand();
+        if(action.equals("back")) {
+            this.dispose();
+            MainPage np = new MainPage(this.DataManager);
+        }
+        if(action.equals("create")) {
+            this.dispose();
+            PrestationPage pp = new PrestationPage(this.DataManager);
+        }
+        if(action.equals("categorie")) {
+            this.dispose();
+            CategoriePage pp = new CategoriePage(this.DataManager);
+        }
     }
 }

@@ -85,7 +85,7 @@ public class AffectationPage extends JFrame implements ActionListener {
     }
 
     public void afficherPrestataireCategorie(){
-        String Query = "SELECT * FROM prestataire WHERE categorie_ville = \""+this.prestation.getCategorie_ville()+ "\" AND categorie_nom = \""+this.prestation.getCategorie_nom()+"\" AND id_prestataire NOT IN (SELECT prestataire_id_prestataire FROM affectation WHERE prestation_id_prestation = "+this.prestation.getId_prestation()+" )ORDER BY id_prestataire ASC";
+        String Query = "SELECT * FROM prestataire WHERE categorie_ville = \""+this.prestation.getCategorie_ville()+ "\" AND categorie_nom = \""+this.prestation.getCategorie_nom()+"\" AND id_prestataire NOT IN (SELECT prestataire_id_prestataire FROM affectation WHERE prestation_id_prestation = "+this.prestation.getId_prestation()+")ORDER BY id_prestataire ASC";
         Object[][] data = this.DataManager.getDataTable(Query, 0);
         Object[] header = this.DataManager.getHeaderTable(Query, 0);
 
@@ -111,7 +111,7 @@ public class AffectationPage extends JFrame implements ActionListener {
         header[header.length-1] ="Supprimer";
 
         if(data != null){
-            this.setAffecterBtn(data,header,header.length-1, "Supp");
+            this.setAffecterBtn(data,header,header.length-1, "Supprimer");
             this.table1 = new JTable(data, header);
             scroll1.setViewportView(table1);
 
@@ -132,7 +132,7 @@ public class AffectationPage extends JFrame implements ActionListener {
         header[header.length-1] ="Affecter";
 
         if(data != null){
-            this.setAffecterBtn(data,header,header.length-1, "Affect");
+            this.setAffecterBtn(data,header,header.length-1, "Affecter");
             this.table2 = new JTable(data, header);
             scroll2.setViewportView(table2);
 

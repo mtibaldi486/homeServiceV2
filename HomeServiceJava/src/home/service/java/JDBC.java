@@ -11,7 +11,7 @@ public class JDBC {
     private Connection conn = null;
     private Statement stmt = null;
     private ResultSet rs = null;
-    private PreparedStatement test = null;
+    private PreparedStatement pst = null;
 
     public JDBC(){
         try {
@@ -123,6 +123,24 @@ public class JDBC {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("CodeError: " + e.getErrorCode());
         }
+    }
+
+    public int insertLastId(String Query){
+        try{
+            stmt = conn.createStatement();
+            pst = conn.prepareStatement(Query, Statement.RETURN_GENERATED_KEYS );
+            pst.executeUpdate();
+
+            rs = pst.getGeneratedKeys();
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+        }catch(SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("CodeError: " + e.getErrorCode());
+        }
+        return -1;
     }
 
 
