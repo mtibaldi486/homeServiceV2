@@ -27,6 +27,8 @@ public class MainPage extends JFrame implements ActionListener {
         if(this.DataManager.getConn() != null) {
             this.SQLButton.addActionListener(this);
             this.SQLButton.setActionCommand("sql");
+            this.RQButton.addActionListener(this);
+            this.RQButton.setActionCommand("rqt");
             this.restart.addActionListener(this);
             this.restart.setActionCommand("restart");
         }
@@ -50,6 +52,10 @@ public class MainPage extends JFrame implements ActionListener {
             this.dispose();
             JDBC newData = new JDBC();
             MainPage hp = new MainPage(newData);
+        }
+        if(action.equals("rqt")){
+            this.dispose();
+            RequettePage rq = new RequettePage(this.DataManager);
         }
     }
 }
