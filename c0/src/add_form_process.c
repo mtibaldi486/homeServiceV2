@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 16:21:49 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/05/02 19:09:41 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/05/02 20:35:37 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 
@@ -59,6 +59,11 @@ void   load_input(t_add *add, t_input *input)
   input->categorie = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(add->categorie_entry));
   input->mail = gtk_entry_get_text (GTK_ENTRY(add->mail_entry));
   input->reccurent = gtk_entry_get_text (GTK_ENTRY(add->reccur_entry));
+  input->unit_min = gtk_entry_get_text (GTK_ENTRY(add->min_entry));
+  if (!*(input->reccurent))
+    input->reccurent = 0;
+  if (!*(input->unit_min))
+    input->unit_min = strdup("0");
   return ;
 }
 

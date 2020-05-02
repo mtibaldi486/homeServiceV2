@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/07 14:39:51 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/05/02 19:07:53 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/05/02 20:33:32 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 
@@ -29,9 +29,9 @@ int   insert_presta_bdd(t_input *input)
     return (0);
   }
   check_categorie(con, input);
-  sprintf(request, "INSERT INTO prestataire (nom, tel_mobile, tel_fixe, adresse_entreprise, url_qrcode, prix_heure, supplement, company_name, code_postal, categorie_nom, categorie_ville, email, prix_recurrent) \
-  VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" , \
-  input->name, input->fixe_phone, input->mobil_phone, input->address, input->url_qr, input->tarif, input->suplement, input->company_name, input->cp, input->categorie, conf->city,input->mail, input->reccurent);
+  sprintf(request, "INSERT INTO prestataire (nom, tel_mobile, tel_fixe, adresse_entreprise, url_qrcode, prix_heure, supplement, company_name, code_postal, categorie_nom, categorie_ville, email, prix_recurrent, nb_heure_min) \
+  VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" , \
+  input->name, input->fixe_phone, input->mobil_phone, input->address, input->url_qr, input->tarif, input->suplement, input->company_name, input->cp, input->categorie, conf->city,input->mail, input->reccurent, input->unit_min);
   printf("request = %s\n", request);
   if (mysql_query(con, request))
   {

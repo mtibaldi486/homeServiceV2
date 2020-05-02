@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/02/25 16:22:10 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/05/02 19:03:57 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/05/02 19:39:13 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 #ifndef HS_H
@@ -67,6 +67,8 @@ typedef struct s_add
   GtkWidget *categorie_entry;
   GtkWidget *mail_entry;
   GtkWidget *reccur_entry;
+  GtkWidget *min_entry;
+
 
   GtkWidget *name_lab;
   GtkWidget *phone_lab;
@@ -79,6 +81,7 @@ typedef struct s_add
   GtkWidget *categorie_lab;
   GtkWidget *mail_lab;
   GtkWidget *reccur_lab;
+  GtkWidget *min_lab;
 }               t_add;
 
 typedef struct s_input
@@ -95,6 +98,7 @@ typedef struct s_input
   const gchar *categorie;
   const gchar *mail;
   const gchar *reccurent;
+  const gchar *unit_min;
 }              t_input;
 
 typedef struct s_list
