@@ -6,7 +6,7 @@
 /*   By: root <root@myges.fr>                  +#++:++#  +#++:++#++ :#:           +#+       */
 /*                                            +#+              +#+ +#+  +#+#     +#+        */
 /*   Created: 2020/03/03 10:57:59 by root    #+#              #+# #+#    #+     #+#         */
-/*   Updated: 2020/03/03 10:58:04 by root   ##########  ########  ######## ###########      */
+/*   Updated: 2020/05/02 19:46:12 by root   ##########  ########  ######## ###########      */
 /*                                                                                          */
 /* **************************************************************************************** */
 
@@ -54,6 +54,6 @@ void make_qr(t_input *input)
   sprintf(path, "img/qr/%s-%s", id, conf->city);
   sprintf(cmd, "qrencode -o %s.png %s", path, path);
   system(cmd);
-  input->url_qr = path;
+  input->url_qr = strdup(path);
   return ;
 }

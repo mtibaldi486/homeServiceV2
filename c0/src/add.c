@@ -40,6 +40,8 @@ void register_provider(GtkButton *btn, gpointer data)
   insert_presta_bdd(input);
   make_qr(input);
   add_to_profil(add);
+  free((void *)input->url_qr);
+  free((void *)input->unit_min);
   free(input);
   return ;
 }
@@ -105,17 +107,21 @@ void  create_widget_add(t_add *add)
   add->cp_entry = gtk_entry_new();
   add->categorie_entry = create_combo_box();
   add->mail_entry = gtk_entry_new();
+  add->reccur_entry = gtk_entry_new();
+  add->min_entry = gtk_entry_new();
   add->title_lab = create_lab(add->title_lab, "Ajout d'un prestataire", 4);
   add->name_lab = create_lab(add->name_lab, "Nom du prestataire", 1);
   add->phone_lab = create_lab(add->phone_lab, "Numéro de fixe", 1);
   add->mphone_lab = create_lab(add->mphone_lab, "Numéro de mobile", 1);
   add->address_lab = create_lab(add->address_lab, "Adresse", 1);
-  add->tarif_lab = create_lab(add->tarif_lab, "Rémunération / H", 1);
+  add->tarif_lab = create_lab(add->tarif_lab, "Rémunération par unité", 1);
   add->suplement_lab = create_lab(add->suplement_lab, "Préciser tout facturation suplémentaire", 1);
   add->nameCompany_lab = create_lab(add->nameCompany_lab, "Nom de la société", 1);
   add->cp_lab = create_lab(add->cp_lab, "Code postal", 1);
   add->categorie_lab = create_lab(add->categorie_lab, "Secteur", 1);
   add->mail_lab = create_lab(add->mail_lab, "Email", 1);
+  add->reccur_lab = create_lab(add->reccur_lab, "Prix reccurent par unité", 1);
+  add->min_lab = create_lab(add->reccur_lab, "Nb unit minimum", 1);
 }
 
 void put_widget_add(t_add *add)
@@ -123,7 +129,7 @@ void put_widget_add(t_add *add)
   gtk_container_add(GTK_CONTAINER(add->fixed), GTK_WIDGET(add->img));
   gtk_fixed_put(GTK_FIXED(add->fixed), add->title_lab, 400, 20);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->btn_return, 1000, 20);
-  gtk_fixed_put(GTK_FIXED(add->fixed), add->btn_register, 600, 440);
+  gtk_fixed_put(GTK_FIXED(add->fixed), add->btn_register, 600, 480);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->name_lab, 275, 70);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->name_entry, 275, 90);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->nameCompany_lab, 600, 70);
@@ -144,11 +150,19 @@ void put_widget_add(t_add *add)
   gtk_fixed_put(GTK_FIXED(add->fixed), add->tarif_entry, 275, 370);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->suplement_lab, 275, 420);
   gtk_fixed_put(GTK_FIXED(add->fixed), add->suplement_entry, 275, 440);
+  gtk_fixed_put(GTK_FIXED(add->fixed), add->reccur_lab, 600, 350);
+  gtk_fixed_put(GTK_FIXED(add->fixed), add->reccur_entry, 600, 370);
+  gtk_fixed_put(GTK_FIXED(add->fixed), add->min_lab, 600, 420);
+  gtk_fixed_put(GTK_FIXED(add->fixed), add->min_entry, 600, 440);
   gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(add->fixed));
 }
 
 void destroy_add(t_add *add)
 {
+  gtk_widget_destroy(add->min_lab);
+  gtk_widget_destroy(add->min_entry);
+  gtk_widget_destroy(add->reccur_lab);
+  gtk_widget_destroy(add->reccur_entry);
   gtk_widget_destroy(add->mail_lab);
   gtk_widget_destroy(add->categorie_lab);
   gtk_widget_destroy(add->cp_lab);
