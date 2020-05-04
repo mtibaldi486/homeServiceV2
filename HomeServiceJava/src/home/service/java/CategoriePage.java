@@ -34,7 +34,6 @@ public class CategoriePage  extends JFrame implements ActionListener {
         for (int i = 0; i < dataVille.length; i++) {
             this.BoxVille.addItem(dataVille[i]);
         }
-
     }
 
     @Override

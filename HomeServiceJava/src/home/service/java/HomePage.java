@@ -72,14 +72,14 @@ public class HomePage extends JFrame implements ActionListener {
         Object[] header = this.DataManager.getHeaderTable(Query,1);
         Query = "SELECT id_prestation FROM prestation WHERE id_prestation NOT IN (SELECT prestation_id_prestation FROM affectation) ORDER BY id_prestation ASC";
         Object[]prestaAffect = this.DataManager.getOneDataTable(Query);
-        header[header.length-1] ="Possibilités";
+        header[header.length-1] ="Prestataire";
         this.setBtn(data,header,prestaAffect,1);
         data=this.sortPrestation(data);
 
         this.table2 = new JTable(data, header);
         table2.setDefaultEditor(Object.class, null);
-        table2.getColumn("Possibilités").setCellRenderer(new ButtonRenderer());
-        table2.getColumn("Possibilités").setCellEditor(new ButtonEditor(new JCheckBox(),this, DataManager));
+        table2.getColumn("Prestataire").setCellRenderer(new ButtonRenderer());
+        table2.getColumn("Prestataire").setCellEditor(new ButtonEditor(new JCheckBox(),this, DataManager));
         scroll2.setViewportView(table2);
     }
 

@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="687e121e-0952-4049-a499-c96a5dbe1535" name="Default Changelist" comment="Requetteur added">
-      <change afterPath="$PROJECT_DIR$/src/home/service/java/RequettePage.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/home/service/java/RequettePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/PrestationPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/PrestationPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/ButtonEditor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/ButtonEditor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/Home_Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/Home_Page.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/JDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HomeServiceJava/home/service/java/JDBC.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/home/service/java/ButtonEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/ButtonEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home/service/java/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/MainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home/service/java/CategoriePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/CategoriePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home/service/java/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home/service/java/Home_Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/Home_Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home/service/java/JDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home/service/java/JDBC.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,22 +132,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587718897988" />
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1588367306056">
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1588550846152">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588367306056" />
-    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1588367306056">
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588550846152" />
+    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1588550846152">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588367306056" />
-    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1588367306056">
+    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588550846152" />
+    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1588550846152">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588367306056" />
-    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1588367306056">
+    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588550846152" />
+    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1588550846152">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588367306056" />
+    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588550846152" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1587418679041">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -169,10 +172,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="839" y="314" key="UIDesigner.ListEditorDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588169874033" />
-    <state x="655" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1588361384171">
+    <state x="655" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1588549673364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="655" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588361384171" />
+    <state x="655" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588549673364" />
     <state x="0" y="0" width="1510" height="718" maximized="true" key="dock-window-1" timestamp="1587468703508">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

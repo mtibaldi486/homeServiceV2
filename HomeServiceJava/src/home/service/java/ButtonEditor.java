@@ -107,7 +107,7 @@ public class ButtonEditor extends DefaultCellEditor implements ActionListener{
                 this.last.dispose();
                 AffectationPage next = new AffectationPage(this.table.getValueAt(row, 0).toString(), "prestataire");
             }
-            else if(this.column.equals("Possibilités")){
+            else if(this.column.equals("Prestataire")){
                 this.last.dispose();
                 AffectationPage next = new AffectationPage(this.table.getValueAt(row, 0).toString(), "prestation");
             }

@@ -84,7 +84,6 @@ public class JDBC {
         catch(SQLException e){
             return null;
         }
-
     }
 
     public String[] getHeaderTable(String Query, int nb_button){
@@ -133,8 +132,10 @@ public class JDBC {
 
             rs = pst.getGeneratedKeys();
             if(rs.next()){
+                rs.close();
                 return rs.getInt(1);
             }
+            rs.close();
         }catch(SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
